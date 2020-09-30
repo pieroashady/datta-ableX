@@ -33,7 +33,8 @@ class App extends Component {
           path={route.path}
           exact={route.exact}
           name={route.name}
-          render={(props) => <route.component {...props} />}
+          render={(props) =>
+            !checkUser() ? <route.component {...props} /> : <Route path='/' component={AdminLayout} />}
         />
       ) : null;
     });
