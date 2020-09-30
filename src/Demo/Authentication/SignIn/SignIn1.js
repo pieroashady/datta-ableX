@@ -76,7 +76,7 @@ class SignUp1 extends React.Component {
                     <input
                       type='password'
                       className='form-control'
-                      placeholder='password'
+                      placeholder='Password'
                       onChange={(e) => this.setState({ password: e.target.value })}
                     />
                   </div>
