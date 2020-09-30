@@ -1,5 +1,5 @@
 import React, { Component, Suspense } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Loadable from 'react-loadable';
 
 import '../../node_modules/font-awesome/scss/font-awesome.scss';
@@ -9,6 +9,7 @@ import Aux from '../hoc/_Aux';
 import ScrollToTop from './layout/ScrollToTop';
 import routes from '../route';
 import Parse from 'parse';
+import { checkUser } from './utils';
 
 Parse.initialize(
   process.env.REACT_APP_APPLICATION_ID,
@@ -43,7 +44,7 @@ class App extends Component {
           <Suspense fallback={<Loader />}>
             <Switch>
               {menu}
-              <Route path='/' component={AdminLayout} />
+              <Route path='/' render={() => (checkUser() ? AdminLayout : <Redirect to='/auth/signin-1' />)} />
             </Switch>
           </Suspense>
         </ScrollToTop>
