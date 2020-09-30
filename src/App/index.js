@@ -44,7 +44,21 @@ class App extends Component {
           <Suspense fallback={<Loader />}>
             <Switch>
               {menu}
-              <Route path='/' render={() => (checkUser() ? AdminLayout : <Redirect to='/auth/signin-1' />)} />
+              {/* Check user sudah login atau belum */}
+              {checkUser() ? (
+                // kalau sudah redirect ke halaman Admin
+                <Route path='/' component={AdminLayout} />
+              ) : (
+                // kalau belum redirect ke halaman sign in
+                <Redirect to='/auth/signin-1' />
+              )}
+
+              {/* <Route path='/' component={AdminLayout} />
+              <Route
+                path='/dashboard'
+                render={(props) =>
+                  checkUser() ? <Redirect to='/dashboard/default' /> : <Redirect to='/auth/signin-1' />}
+              /> */}
             </Switch>
           </Suspense>
         </ScrollToTop>

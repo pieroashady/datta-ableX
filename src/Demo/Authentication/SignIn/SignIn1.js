@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 
 import './../../../assets/scss/style.scss';
 import Aux from '../../../hoc/_Aux';
@@ -28,8 +28,7 @@ class SignUp1 extends React.Component {
       .logIn(username, md5(password))
       .then((x) => {
         this.setState({ loading: false });
-        this.props.history.push('/dashboard/default');
-        alert('Berhasil login');
+        return this.props.history.push('/dashboard/default');
       })
       .catch((err) => {
         console.log(err);

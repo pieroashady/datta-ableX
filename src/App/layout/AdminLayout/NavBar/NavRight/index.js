@@ -9,6 +9,7 @@ import Avatar1 from '../../../../../assets/images/user/avatar-1.jpg';
 import Avatar2 from '../../../../../assets/images/user/avatar-2.jpg';
 import Avatar3 from '../../../../../assets/images/user/avatar-3.jpg';
 import Parse from 'parse';
+import { withRouter } from 'react-router-dom';
 
 class NavRight extends Component {
   constructor(props) {
@@ -172,4 +173,4 @@ class NavRight extends Component {
   }
 }
 
-export default NavRight;
+export default withRouter(NavRight);
